@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <Title></Title>
+    </head>
+
+    <style>
+        carousel-inner-before{
+            height:51%;
+            width:100%;
+            margin-top:1%
+        }
+    </style>
+
+    <body>
+        
+        {% if "How To Handle Alzheimer Patients" in search%}
+            {% for i in tips %}
+                {{i}}
+            {% endfor %}
+        {% elif "Challenges faced by family members" in search%}
+            {% for i in tips %}
+                {{i}}
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

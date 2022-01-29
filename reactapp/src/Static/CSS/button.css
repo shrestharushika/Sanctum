@@ -1,0 +1,55 @@
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    
+    margin-left:0.5%;
+    height:20px;
+    margin-top:1%;
+  }
+  
+  .btn{
+     
+    color: black; 
+    font-size: large;
+    margin-left:0.5%;
+  }
+
+  .nav-btn1{
+    
+    font-size:36px;
+    margin-top:0.2%;
+    margin-left:1%;
+    margin-right:2%;
+    float:left;
+    color:cornsilk;
+  }
+  .nav-btn2{
+    
+    font-size:36px;
+    margin-top:0.2%;
+    margin-left:1%;
+    margin-right:2%;
+    float:right;
+    color:cornsilk;
+  }
+  .btn-primary{
+    /* position:relative; */
+    margin-top:2%;
+    font-size:36px;
+    /* height:30px; */
+    width:50px;
+    align-items: center;
+    /* background-color: rgba(245, 78, 78, 0.8); */
+    color: rgb(245, 228, 228);
+    
+  }
+  
+  .microphone{
+    height:50px;
+    width:45px;
+    align-items: center;
+    font-size:26px;
+    border-style:groove;
+    border-width:7px;
+    /* border-color:gray; */
+  }

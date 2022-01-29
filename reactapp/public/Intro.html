@@ -1,0 +1,77 @@
+
+<html>
+    <head>
+        <Title> App</Title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="icon" href="http://127.0.0.1:3000/favicon.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <style>
+        .carousel-inner img{
+            height:65%;
+            width:100%;
+        }
+        .com{
+            border-radius:50%;
+            border-width: 5px;
+            height:155px;
+            border-color:brown;
+            float:left;
+            margin-right:5%;
+        }
+        
+        #features{
+            margin-left:30%;
+        }
+        
+    </style>
+
+   
+
+    <body>
+        <div id="img" class="carousel slide" data-ride="carousel" >
+            <ul class="carousel-indicators">
+                <li data-target="#img" data-slide-to="0"  class="active"></li>
+                <li data-target="#img" data-slide-to="1"></li>
+                <li data-target="#img" data-slide-to="2"></li>
+            </ul>
+
+            <!-- slide show -->
+            <div class="carousel-inner">
+                <div class="carousel-item ">
+                    <img src="http://127.0.0.1:3000/images/alzheimer.jpg">
+                </div>
+
+                <div class="carousel-item active">
+                    <img src="http://127.0.0.1:3000/images/speech_disorder.png">
+                </div>
+
+                <div class="carousel-item ">
+                    <img src="http://127.0.0.1:3000/images/speech_disorder2.jpg">
+                </div>
+            </div>
+
+            <!-- left and right controls -->
+            <a class="carousel-control-prev" href="#img" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+
+            <a class="carousel-control-next" href="#img" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+            <h1>We, here at Sanctum offers help to the people with speech disorder and alzheimer and their relatives. </h1>
+            
+            <div id="features">
+                <button class="com"> <a href="{% url 'App:Communication' %}">Communication App</a></button>
+                <button class="com">Alzheimer App</button>
+                <button class="com"><a href="{% url 'App:Recommender' %}">Recommender System</a></button>
+            </div>
+        </div>
+    </body>
+</html>
