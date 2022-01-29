@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from .views import Flashcards,Introduction
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Communication/',Flashcards),
-    path('',Introduction),
+
+    path('',include('App.urls',namespace='App')),
+    
     
 ]
