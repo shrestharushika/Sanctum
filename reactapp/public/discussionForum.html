@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <style>
+        #post{
+            background-color: blanchedalmond;
+            margin-left:4%;
+            margin-right:4%;
+            padding: 1%;
+            border-style:groove;
+            border-color:blanchedalmond;
+            border-width: 3.5px;
+        }
+
+        #reply{
+            /* border-radius:5%; */
+            width:100px;
+            margin-left:4%;
+            height:30px;
+        }
+    </style>
+    <body>
+        
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'App:Communication' %}">Communication App</a></li>
+                    <li ><a href="#">Alzheimer</a></li>
+                    <!-- <li></li> -->
+                    <li class="active"> <a href="{% url 'App:discussionForum' %}">DiscussionForum</a></li>
+                    <li> <a href="{% url 'App:CreateForum' %}">Post Your Issue</a></li>
+                </ul>
+                
+            </div>
+        </nav>
+       
+        <!-- {{forum}} -->
+          
+            {% if  "patient" in user%}
+                {% for i in forum %}
+                    <div id="post">
+                        <p>{{i.problem}}</p>
+
+                        <p>Posted by:{{i.name}} </p>
+                        <p>Email: {{i.email}}</p>
+                     </div> <br>
+                    <!-- </div><input type="text" id="reply"/><br> -->
+                {% endfor %}
+
+            {% elif "doctor" in user %}
+                {% for i in forum %}
+                <div id="post">
+                    <p>{{i.problem}}</p>
+
+                    <p>Posted by:{{i.name}} </p>
+                    <p>Email: {{i.email}}</p>
+                    
+                </div><br>
+                <a href="http://localhost/SupplyChainDAPP_FULL-master/"><input type="button" id="reply" value="Reply"/></a><br><br>
+                {% endfor %}
+
+            {% endif %}
+       
+       
+    </body>
+</html>

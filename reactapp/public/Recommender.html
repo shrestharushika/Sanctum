@@ -1,3 +1,5 @@
+
+
 <html>
     <head>
         <Title></Title>
@@ -49,12 +51,12 @@
                 {% csrf_token %}
                 <label for="stress management"></label>
                 <input type="text" name="search" id="search"></input>
-                <button type="submit"> Search</button>
+                <input type="submit" value="Search">
             </form> 
         </div>
 
-        {% if "NA" in search %}
-            <div id="img" class="carousel slide" data-ride="carousel">
+        
+        <div id="img" class="carousel slide" data-ride="carousel">
                 <ul class="carousel-indicators">
                     <li data-target="#img" data-slide-to="0" class="active"></li>
                     <li data-target="#img" data-slide-to="1" ></li>
@@ -81,14 +83,7 @@
                 <a class="carousel-control-next" href="#img" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
-            </div>   
-        {% else %}
-
-                <div id="tips">
-                    {% for i in head%}   
-                        <a href="{% url 'App:Advice' i %}">{{i}}</a><br><br>
-                    {%endfor%}
-        {% endif %}
+              
         </div>
     </body>
 </html>

@@ -88,10 +88,16 @@ WSGI_APPLICATION = 'Voiceproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": {
+        "ENGINE": "mssql",
+        "NAME": "UserInfo",
+        "USER": "newuser",
+        "PASSWORD": "Info@1212",
+        "HOST": "DESKTOP-2I45NNJ",
+        "PORT": "",
+        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
+        },
+    },
 }
 
 

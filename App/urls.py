@@ -2,11 +2,11 @@ from django.urls import path,include
 
 from .views import Flashcards
 app_name="App"
-from .views import Flashcards,Introduction,Recommender,getInfo
-
+from . import views
 urlpatterns=[
     path('Communication/',Flashcards,name="Communication"),
-    path('',Introduction),
-    path('Recommender/',Recommender,name="Recommender"),
-    path('Tips/<str:search>',getInfo,name="Advice"),
+    path('' ,views.Introduction),
+    path('Recommender/',views.Recommender,name="Recommender"),
+    path('Tips/<str:search>',views.getInfo,name="Advice"),
+    path('Tasks/',views.getTask,name="All_Tasks"),
 ]

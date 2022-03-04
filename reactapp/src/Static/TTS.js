@@ -100,7 +100,7 @@ const TTS=()=>{
             <>
                 
                                  
-                 <div className={`form ${formOpen==true ? 'active':''}`}>
+                 <div className={`form ${formOpen===true ? 'active':''}`}>
                         
                             <div className="btn btn-primary" ><i className="fa fa-times" aria-hidden="true" onClick={Form}></i></div>
                         <center>
@@ -111,7 +111,7 @@ const TTS=()=>{
                             <button type="submit" onClick={()=>AddCards()}>Add</button>
                         </center>
                  </div>
-                 <div className={`form-overlay ${isOpen == true ? 'active':'' }`} onClick={Form}></div>
+                 <div className={`form-overlay ${isOpen === true ? 'active':'' }`} onClick={Form}></div>
                 
                 <div className="navbar2">
                   
@@ -129,7 +129,7 @@ const TTS=()=>{
                     {/* </div> */}
                 </div>
 
-                <div className = {`sidebar ${isOpen == true ? 'active':''}`}>
+                <div className = {`sidebar ${isOpen ===true ? 'active':''}`}>
                             <div className="sd-header">
                                 <h3>Features</h3>
                                 <div className="btn btn-primary"  onClick={ToggleSidebar}><i className="fa fa-times" aria-hidden="true"></i></div>
@@ -150,7 +150,7 @@ const TTS=()=>{
                                 </ul>
                             </div>
                 </div>
-                <div className={`sidebar-overlay ${isOpen == true ? 'active':'' }`} onClick={ToggleSidebar}></div>
+                <div className={`sidebar-overlay ${isOpen === true ? 'active':'' }`} onClick={ToggleSidebar}></div>
                 <TextToSpeechbox/>
                 <Navbar filterItem={filterItem} cardList={cardList}/>
                 <FlashCards cardData={cardData} />

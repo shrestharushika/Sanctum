@@ -1,0 +1,59 @@
+<html>
+    <head>
+       
+    </head>
+
+
+
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap:10px;
+            padding: 10px;
+            margin-left:10px;
+            margin-right:10px; 
+            background-color: blue;
+        }
+
+        .container{
+            text-align: center;
+            margin-left:10px;
+            margin-right:10px;
+            background-color:darkred;
+        }
+        
+        .text-block{
+            background-color: gold;
+            position: absolute;
+            top: 20%;
+            left: 34%;
+            /* transform: translate(-50%, -50%); */
+
+        }
+       
+        p{font-size: 35px;}
+    </style>
+
+    <body> <!-- onload is used within body to call script whenever webpage is loaded -->
+        
+        <a href="{% url 'App:SetReminder'%}"><input type="button" value="Add"/> </a>
+      
+        
+        
+        <div class="grid-container">
+            {%for task in tasks%}
+                <div class="container">   
+                    <p>{{task.set_time}}</p>
+
+                    <h2 id="tasks">{{task.tasks}}</h2>
+                </div>
+               
+            
+            {% endfor %}
+            
+       </div>
+
+       <script src="http://127.0.0.1:3000/js/reminder.mjs" type="module"></script>
+    </body>
+</html>

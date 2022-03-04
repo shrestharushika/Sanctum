@@ -1,0 +1,57 @@
+
+<html>
+
+    <head>
+        <title>
+
+        </title>
+    </head>
+
+    <body>
+        <form method="POST" action="">
+            {% csrf_token %}
+             
+            
+            <h3>Name</h3>
+            <input type="text" name="name"/>
+                
+            <h3>Age</h3>
+            {% for i in form.age%}
+                {{i}}
+            {% endfor %}                
+                
+            <h3>Email</h3>
+            <input type="text" name="email"></input>
+                
+            <h3>Does patient repeats the same story?</h3>
+            
+            {% for i in form.repeating%}
+               <p> {{i}}</p>
+            {% endfor %}                  
+                
+                                    
+            <h3>How often patient misplaces an item</h3>
+            <!-- <input type="radio" name="item_mispl" id="itm_mispl">{{form.misplaceItem}}</input> -->
+            {% for i in form.misplaceItem%}
+                {{i}}
+            {% endfor %}   
+                
+            <h3>Does patient suspects others are hiding,moving or stealing items when they cannot find them?</h3>
+           
+            {% for i in form.suspectingNature%}
+                {{i}}
+            {% endfor %}                         
+                
+                
+            <h3>Does people feel disoriented in unfamiliar places</h3>
+           
+            {% for i in form.disorientation%}
+                {{i}}
+            {% endfor %}                        
+            <br><br>
+            <input type="submit" value="submit">
+                                    
+        </form>
+
+    </body>
+</html>

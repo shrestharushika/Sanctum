@@ -12,15 +12,18 @@
     </style>
 
     <body>
-        
-        {% if "How To Handle Alzheimer Patients" in search%}
-            {% for i in tips %}
-                {{i}}
-            {% endfor %}
-        {% elif "Challenges faced by family members" in search%}
-            {% for i in tips %}
-                {{i}}
-            {% endfor %}
-        {% endif %}
+        <center>
+            <ul>
+                {% if "How To Handle Alzheimer Patients" in search%}
+                    {% for i in tips %}
+                    <li>{{i}}</li><br><br>
+                    {% endfor %}
+                {% elif "Challenges faced by family members" in search%}
+                    {% for i in tips %}
+                        <li>{{i}}</li><br><br>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </center>
     </body>
 </html>
