@@ -1,6 +1,6 @@
 //Using speech synthesis utterance
 
-
+console.log("hi");
 window.onerror = function (msg, url, line) {
     alert("Message : " + msg );
     alert("url : " + url );
@@ -39,12 +39,14 @@ function closeForm(){
     document.getElementById("form").style.display="none";
 }
 
-function ring(task){
+function TTS(task)
+{
     const msg=new SpeechSynthesisUtterance();
-    msg.rate=2;
+    msg.rate=0.2;
     msg.pitch=1;
     msg.text=task;
-    SpeechSynthesis.speak(msg);
+    speechSynthesis.speak(msg);
+    console.log(task);
 }
 
 
@@ -53,7 +55,7 @@ function ring(task){
 
 function localStorageAlarmList()
 {
-   let List=localStorage.getItem("alarmList");
+   let List=localStorage.getItem("Alarm");
    if(List==null)return List=[];
 
     return JSON.parse(List);
@@ -61,7 +63,7 @@ function localStorageAlarmList()
 
 function localStorageTaskList()
 {
-    let List=localStorage.getItem("taskList");
+    let List=localStorage.getItem("Tasks");
     if(List==null)return List=[];
   
     return JSON.parse(List);
@@ -92,34 +94,46 @@ let taskList = localStorageTaskList();
 let myList=localStorageList();
 
  
-
+let alarmListOut=0;
 // if(myList){ //not null show existing tasks
 //     showTasks(myList);
 // }
+let remove=(val)=>{
+    let lists=localStorage.getItem("myList");
 
-function showTasks(){
+    if(lists){
+        lists=JSON.parse(lists);
+        let newlist=lists.filter((value)=>value!=val);
+        console.log(newlist);
+    }
+}
+
+   
+function showTasks()
+{
      
     let lists=localStorage.getItem("myList");
     
     if(lists)
     {
-        let Lists=JSON.parse(lists);
-        console.log(typeof(Lists));
-
-        Lists.forEach((element,id)=>{
         
-        // let completed= element.status==="completed"?"checked":"";   
+        let Lists=JSON.parse(lists);
+       
+        
+        let id=0;
+        Lists.map((element)=>{
+            const {Time,Task}=element
+            
+          
+        // display the tasks   
         text+=`<li class="task">
-             <label for=${id}><p>${element.Task}</p></label></li>`;
+             <label for=${Time}><button onclick="remove(this.value)" value=${Task} class="delete-alarm">Delete</button><p>${Task}</p> </label> </li>`;
+             console.log(Task);
         });
+        
     }
-    
-    // }else{
-        // text+=Object.values(lists)+"<br>"+"<br>"+"<br>";
-    // }
     reminderlist.innerHTML=text;
     // inputValue.value=" ";
-    
 }
 
 
@@ -131,11 +145,44 @@ if(todo){
 
 function ringFunc(time){
     audio.play();
-    alert('reminder');
+    // alert(time);
+
+    let lists=localStorage.getItem("myList");
+    lists=JSON.parse(lists);
+
+    if(lists)
+    {
+        // console.log(lists["Time"]);
+        // console.log(lists.indexOf(time));
+    
+        for(var i=0;i<lists.length;i++)
+        {
+            console.log(lists[i].Time);
+            
+            // audio.pause();
+             var count=5;
+            if(lists[i].Time===time)
+            {
+                audio.pause();
+                while(count>=0)
+                {
+                    TTS(lists[i].Task);  
+                    console.log(lists[i].Task);
+                    count--;
+                }
+            }
+        }
+    }
 }
-function currentTime(){
+
+
+setInterval(currentTime,1000)// 1s=1000ms
+
+function currentTime()
+{
     var now=new Date();
 
+    
     let n_hours=now.getHours();
     let n_mins=now.getMinutes();
     let n_sec=now.getSeconds();
@@ -150,17 +197,22 @@ function currentTime(){
         n_sec='0'+n_sec;
     }
     let time= n_hours+":"+n_mins+":"+n_sec;
+    
 
+    
+
+    
+   
     if(alarmList.includes(time)){
         ringFunc(time);
+       
     }
 }
 
-setInterval(currentTime,1000)// 1s=1000ms
 
-function SetAlarm(e)
+function SetAlarm()
 {
-    e.preventDefault();
+  
     const date=document.getElementById('date').value;
     const todotime=document.getElementById('time').value;
     const task=document.getElementById('tasks').value;
@@ -195,7 +247,7 @@ function SetAlarm(e)
         sec='0'+sec;
     }
 
-    const alarmtime=hours+":"+mins+":"+sec;
+    let alarmtime=hours+":"+mins+":"+sec;
     
     if(isNaN(alarmtime)){
         if(!alarmList.includes(alarmtime))
@@ -207,13 +259,13 @@ function SetAlarm(e)
             
 
             myList.push({"Time":alarmtime,"Task":task});
-            console.log(alarmList);
+           
             localStorage.setItem("Alarm",JSON.stringify(alarmList));
             localStorage.setItem("Tasks",JSON.stringify(taskList));
             localStorage.setItem("myList",JSON.stringify(myList));
             
            
-            showTasks();
+            // showTasks();
             
             
             // const set=time+" "+task;
@@ -223,15 +275,7 @@ function SetAlarm(e)
         
     }
     
-    const today=new Date();
-
-    let timeToAlarm=today-alarmTime;
-                
-    // if(timeToAlarm>=0){
-    //     setTimeout(()=>{
-    //         ring();
-    //     },timeToAlarm)
-    // }
+    
    
 }
        

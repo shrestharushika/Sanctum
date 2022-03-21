@@ -54,7 +54,7 @@ const TTS=()=>{
     }
 
     const Form=()=>{
-        formOpen==true?setFormopen(false):setFormopen(true);
+        formOpen===true?setFormopen(false):setFormopen(true);
     }
 
     const ToggleSidebar=()=>{
@@ -101,8 +101,11 @@ const TTS=()=>{
                 
                                  
                  <div className={`form ${formOpen===true ? 'active':''}`}>
-                        
+                        <div className="formhead">
+                            <h3>Add Cards</h3>
                             <div className="btn btn-primary" ><i className="fa fa-times" aria-hidden="true" onClick={Form}></i></div>
+                        </div>
+                        
                         <center>
                             <label><b>Category:</b></label><br></br><br></br>
                             <input type="text"  className="textbox" onChange={handleAddCategory}></input><br></br>
